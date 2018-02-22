@@ -1,9 +1,13 @@
 realtors = [
-  {id: 1, name: "Citi Habitats", address: "387 Park Avenue South, 4th Floor, New York, NY 10016", phone_number: "212-685-7777", email: "info@citihabitats.com"},
-  {id: 2, name: "Living Source Residential", address: "30 Broad Street Suite 03, New York, NY 10004", phone_number: "212-952-1130", email: "info@lsr-nyc.com" },
-  {id: 3, name: "Douglas Elliman", address: "575 Madison Ave, New York, NY 10022", phone_number: "212-891-7000", email: "info@douglaselliman.com"},
-  {id: 4, name: "New York Living Solutions", address: "90 John St, New York, NY 10038", phone_number: "212-962-3940", email: "info@nyls.net" }
+  {name: "Citi Habitats", address: "387 Park Avenue South, 4th Floor, New York, NY 10016", phone_number: "212-685-7777", email: "info@citihabitats.com"},
+  {name: "Living Source Residential", address: "30 Broad Street Suite 03, New York, NY 10004", phone_number: "212-952-1130", email: "info@lsr-nyc.com" },
+  {name: "Douglas Elliman", address: "575 Madison Ave, New York, NY 10022", phone_number: "212-891-7000", email: "info@douglaselliman.com"},
+  {name: "New York Living Solutions", address: "90 John St, New York, NY 10038", phone_number: "212-962-3940", email: "info@nyls.net" }
 ]
+
+realtors.each do |realtor|
+  Realtor.create(realtor)
+end
 
 listings = [
   {neighborhood: "Tribeca", realtor_id: 1, address: "36 Laight Street #PHB", listing_price: 13500, beds: 3, baths: 2, description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", featured: false, main_img: "https://cdn-img0.streeteasy.com/nyc/image/88/303632288.jpg"},
@@ -91,6 +95,10 @@ listings = [
   {neighborhood: "Chelsea ", realtor_id: 3, address: "221 West 29 #17B", listing_price: 4453, beds: 1, baths: 1, description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", featured: false, main_img: "https://cdn-img3.streeteasy.com/nyc/image/67/305311067.jpg"}
 ]
 
+listings.each do |listing|
+  Listing.create(listing)
+end
+
 images = [
 [{source: "https://cdn-img1.streeteasy.com/nyc/image/89/303632289.jpg"}, {source: "https://cdn-img3.streeteasy.com/nyc/image/91/303632291.jpg"}, {source: "https://cdn-img2.streeteasy.com/nyc/image/90/303632290.jpg"}, {source: "https://s3.amazonaws.com/img.streeteasy.com/nyc/attachments/15009755/large/78db135ab92e02d86ebaa7e03793abd5ae09fb24.jpg?1517001076"}],
 [{source: "https://cdn-img-feed.streeteasy.com/nyc/image/74/298411174.jpg"}, {source: "https://cdn-img-feed.streeteasy.com/nyc/image/23/298411123.jpg"}, {source: "https://cdn-img-feed.streeteasy.com/nyc/image/87/298411087.jpg"}, {source: "https://cdn-img-feed.streeteasy.com/nyc/image/14/299225014.jpg"}, {source: "https://cdn-img-feed.streeteasy.com/nyc/image/55/298411055.jpg"}, {source: "https://cdn-img-feed.streeteasy.com/nyc/image/22/298411022.jpg"}, {source: "https://cdn-img-feed.streeteasy.com/nyc/image/84/298410984.jpg"}, {source: "https://cdn-img-feed.streeteasy.com/nyc/image/45/298410945.jpg"}, {source: "https://cdn-img-feed.streeteasy.com/nyc/image/11/298410911.jpg"}, {source: "https://cdn-img-feed.streeteasy.com/nyc/image/70/298410870.jpg"}, {source: "https://s3.amazonaws.com/img.streeteasy.com/nyc/attachments/14868304/large/2ac9bf640f503d729c1d31da4357ddf98bfbd093.jpg?1513116566"}],
@@ -177,13 +185,8 @@ images = [
 [{source: "https://cdn-img2.streeteasy.com/nyc/image/62/305311062.jpg"}, {source: "https://cdn-img1.streeteasy.com/nyc/image/73/305311073.jpg"}, {source: "https://cdn-img3.streeteasy.com/nyc/image/63/305311063.jpg"}, {source: "https://cdn-img0.streeteasy.com/nyc/image/68/305311068.jpg"}, {source: "https://cdn-img2.streeteasy.com/nyc/image/70/305311070.jpg"}, {source: "https://cdn-img0.streeteasy.com/nyc/image/64/305311064.jpg"}, {source: "https://cdn-img0.streeteasy.com/nyc/image/72/305311072.jpg"}, {source: "https://cdn-img0.streeteasy.com/nyc/image/20/305311220.jpg"}, {source: "https://cdn-img3.streeteasy.com/nyc/image/19/305311219.jpg"}, {source: "https://cdn-img3.streeteasy.com/nyc/image/23/305311223.jpg"}]
 ]
 
-realtors.each do |realtor|
-  Realtor.create(realtor)
-end
 
-listings.each do |listing|
-  Listing.create(listing)
-end
+
 
 images.each_with_index do |image_array, index|
   listing = Listing.find((index+1))
